@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title text-center>
+      Sample Ionic App Accessing Dropbox
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-item>
+	    <ion-label stacked>Access Token</ion-label>
+	    <ion-input 
+	    	type="text" 
+	    	[(ngModel)]="accessToken"
+	    	placeholder="Ot3SgWahb3wAAAAAAAAAxMaFHhPDfQxT3_NnCdda5h2xE3gA_qEGCBP16_2n3869"
+	    ></ion-input>
+	</ion-item>
+    <ion-item>
+	    <ion-label stacked>Folder/Directory</ion-label>
+	    <ion-input 
+	    	type="text" 
+	    	[(ngModel)]="folder"
+	    	placeholder="/my_folder_name"
+	    ></ion-input>
+	</ion-item>
+	<button 
+		ion-button 
+		icon-left 
+		round 
+		large 
+		text-center
+		(click)="myOnClick($event)"
+	>
+  		<ion-icon name="folder"></ion-icon>
+  		Show Contents
+	</button>
+	<h3>Via HttpClient</h3>
+	<ion-card>
+  		<ion-card-content>
+   			<p *ngFor="let name of resultsViaHttpClient">{{ name }}</p>
+   			<h4 
+   				style="color: red;"
+   				*ngIf="0 < errorViaHttpClient.length"
+   			>ERROR: {{ errorViaHttpClient }}</h4>
+  		</ion-card-content>
+
+	</ion-card>
+	<h3>Via Dropbox SDK</h3>
+	<ion-card>
+  		<ion-card-content>
+   			<p *ngFor="let name of resultsViaDropboxSdk">{{ name }}</p>
+   			<h4 
+   				style="color: red;"
+   				*ngIf="0 < errorViaDropboxSdk.length"
+   			>ERROR: {{ errorViaDropboxSdk }}</h4>
+  		</ion-card-content>
+
+	</ion-card>
+</ion-content>
